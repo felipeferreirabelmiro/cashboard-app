@@ -1,5 +1,5 @@
-const CACHE_NAME = 'cashboard-static-v5';
-const APP_FILES = ['./', './index.html', './manifest.webmanifest', './icon.svg', './cloud-config.js', './cloud-sync.js'];
+const CACHE_NAME = 'cashboard-static-v6';
+const APP_FILES = ['./', './index.html', './manifest.webmanifest', './icon.svg', './icon-192.png', './icon-512.png', './apple-touch-icon.png', './cloud-config.js', './cloud-sync.js'];
 
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_FILES)));

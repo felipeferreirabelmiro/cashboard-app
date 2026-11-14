@@ -25,7 +25,7 @@ jobs:
       - name: Prepare static app
         run: |
           mkdir site
-          cp index.html manifest.webmanifest service-worker.js icon.svg cloud-config.js cloud-sync.js site/
+          cp index.html manifest.webmanifest service-worker.js icon.svg icon-192.png icon-512.png apple-touch-icon.png cloud-config.js cloud-sync.js site/
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
