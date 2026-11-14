@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cashboard-static-v3';
+const CACHE_NAME = 'cashboard-static-v4';
 const APP_FILES = ['./', './index.html', './manifest.webmanifest', './icon.svg', './cloud-config.js', './cloud-sync.js'];
 
 self.addEventListener('install', event => {
