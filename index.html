@@ -25,6 +25,7 @@
     .field-hint{margin:-7px 3px 14px;color:#8a8a94;font-size:10px}.dark-mode .field-hint{color:#a9aab5}
     
     #flowSwitch button:disabled{opacity:.42;cursor:not-allowed;filter:grayscale(.35)}.dark-mode #flowSwitch button:disabled{color:#777883}
+    .form-row{grid-template-columns:repeat(2,minmax(0,1fr))}.form-row>.field{min-width:0}.date-row{grid-template-columns:1fr}.date-row input[type="date"]{width:100%;min-width:0;max-width:100%;padding:0 9px;font-size:12px}
   </style>
 </head>
 <body>
@@ -51,7 +52,7 @@
         <div class="kind-switch" id="kindSwitch"><button type="button" data-kind="variable" class="active"><span>⊖</span>Variável</button><button type="button" data-kind="fixed"><span>↻</span>Fixa</button><button type="button" data-kind="installment"><span>◷</span>Parcelada</button></div>
         <div class="kind-switch" id="flowSwitch" style="grid-template-columns:1fr 1fr"><button type="button" data-flow="expense" class="active"><span>⊖</span>Despesa</button><button type="button" data-flow="income" disabled aria-disabled="true" title="Receita desativada por enquanto"><span>＋</span>Receita</button></div>
         <div class="form-row"><div class="field"><label for="amount">Valor (R$)</label><input id="amount" required type="number" min="0.01" step="0.01" placeholder="0,00"></div><div class="field" id="installmentsField" hidden><label for="installments">Parcelas</label><input id="installments" type="number" min="2" max="120" value="2"></div></div>
-        <div class="form-row"><div class="field"><label for="entryDate">Mês da compra</label><input id="entryDate" required type="date"></div><div class="field"><label for="dueDate">Vencimento</label><input id="dueDate" type="date"></div></div><div class="field-hint">Despesas entram no orçamento do mês seguinte ao lançamento.</div>
+        <div class="form-row date-row"><div class="field"><label for="entryDate">Mês da compra</label><input id="entryDate" required type="date"></div><div class="field"><label for="dueDate">Vencimento</label><input id="dueDate" type="date"></div></div><div class="field-hint">Despesas entram no orçamento do mês seguinte ao lançamento.</div>
         <div class="field"><label for="notes">Comentários</label><textarea id="notes" maxlength="180" placeholder="Opcional"></textarea></div>
         <button class="save" type="submit">Salvar lançamento</button>
       </form>
