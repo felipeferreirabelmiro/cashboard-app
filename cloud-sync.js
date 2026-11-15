@@ -58,14 +58,14 @@
     return {
       id, user_id: userId, description: item.description, amount: Number(item.amount), date: item.date,
       due_date: item.dueDate || null, notes: item.notes || '', kind: item.kind || (item.type === 'installment' ? 'installment' : 'variable'),
-      flow: item.flow || 'expense', installments: Number(item.installments) || 1,
+      flow: item.flow || 'expense', installments: Number(item.installments) || 1, paid: Boolean(item.paid), paid_months: item.paidMonths || {},
       type: item.type || ((item.kind === 'installment') ? 'installment' : 'cash'), updated_at: new Date().toISOString()
     };
   }
   function localExpense(row) {
     return { id: row.id, description: row.description, amount: Number(row.amount), date: row.date,
       dueDate: row.due_date || '', notes: row.notes || '', kind: row.kind, flow: row.flow,
-      installments: Number(row.installments) || 1, type: row.type };
+      installments: Number(row.installments) || 1, type: row.type, paid: Boolean(row.paid), paidMonths: row.paid_months || {} };
   }
 
   window.CashboardCloud = {
@@ -77,7 +77,7 @@
     refreshSession: async () => { if (session?.access_token) await accessToken(); return session; },
     loadExpenses: async () => {
       const user = session?.user;
-      const rows = await request('/rest/v1/expenses?select=id,description,amount,date,due_date,notes,kind,flow,installments,type&order=date.desc');
+      const rows = await request('/rest/v1/expenses?select=id,description,amount,date,due_date,notes,kind,flow,installments,type,paid,paid_months&order=date.desc');
       return (rows || []).map(localExpense);
     },
     upsertExpenses: async items => {

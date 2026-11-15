@@ -10,8 +10,13 @@ create table if not exists public.expenses (
   flow text not null default 'expense',
   installments integer not null default 1 check (installments >= 1),
   type text not null default 'cash',
+  paid boolean not null default false,
+  paid_months jsonb not null default '{}'::jsonb,
   updated_at timestamptz not null default now()
 );
+
+alter table public.expenses add column if not exists paid boolean not null default false;
+alter table public.expenses add column if not exists paid_months jsonb not null default '{}'::jsonb;
 
 create index if not exists expenses_user_date_idx on public.expenses(user_id, date);
 alter table public.expenses enable row level security;
